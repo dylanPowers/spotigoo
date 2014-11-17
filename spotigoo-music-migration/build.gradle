@@ -12,6 +12,10 @@ repositories {
         jcenter()
 }
 
+dependencies {
+    compile files('libs/spotifysdk-1.0.0-beta5.aar')
+}
+
 android {
     compileSdkVersion 21
     buildToolsVersion "21.1.1"
