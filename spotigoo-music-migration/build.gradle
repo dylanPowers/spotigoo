@@ -4,16 +4,30 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:0.13.0'
+        classpath 'org.robolectric:robolectric-gradle-plugin:0.13.+'
     }
 }
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
 apply plugin: 'com.android.application'
+apply plugin: 'robolectric'
 
 repositories {
-        jcenter()
+    jcenter()
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 dependencies {
-    compile files('libs/spotifysdk-1.0.0-beta5.aar')
+    compile 'com.spotify.sdk:spotifysdk:1.0.0-beta5@aar'
+    compile 'com.android.support:appcompat-v7:21.+'
+    androidTestCompile('org.robolectric:robolectric:2.4')
 }
 
 android {
