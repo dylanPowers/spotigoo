@@ -16,7 +16,7 @@ To build, you must specify your own Spotify client id. To get a client id,
 sign up as a Spotify developer and then
 [create an app](https://developer.spotify.com/my-applications/#!/applications).
 This id needs to be put in a resource string named "spotify_client_id".
-To do this without breaking things, create a file named:
+To do this without breaking things, create a resource file named:
 ```
 spotigoo-music-migration/src/main/res/values/private-keys.xml
 ```
