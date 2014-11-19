@@ -5,23 +5,18 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.spotify.sdk.android.Spotify;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
 import com.spotify.sdk.android.authentication.SpotifyAuthentication;
 
 
 public class MainActivity extends ActionBarActivity {
-    private static final String REDIRECT_URI = "spotigoo://callback/";
-    private static final String[] PERMISSIONS = new String[] {
-      "playlist-read-private", "playlist-modify-public", "playlist-modify-private"
-    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +29,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         String clientId = getString(R.string.spotify_client_id);
-        SpotifyAuthentication.openAuthWindow(clientId, "token", REDIRECT_URI,
-                                             PERMISSIONS, null, this);
+        // Bind to the service somehow right here
     }
 
     @Override
