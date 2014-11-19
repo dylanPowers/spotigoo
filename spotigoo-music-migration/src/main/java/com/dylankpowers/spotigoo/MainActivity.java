@@ -1,16 +1,27 @@
 package com.dylankpowers.spotigoo;
 
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import com.spotify.sdk.android.Spotify;
+import com.spotify.sdk.android.authentication.AuthenticationResponse;
+import com.spotify.sdk.android.authentication.SpotifyAuthentication;
 
 
 public class MainActivity extends ActionBarActivity {
+    private static final String REDIRECT_URI = "spotigoo://callback/";
+    private static final String[] PERMISSIONS = new String[] {
+      "playlist-read-private", "playlist-modify-public", "playlist-modify-private"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +32,27 @@ public class MainActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-    }
 
+        String clientId = getString(R.string.spotify_client_id);
+        SpotifyAuthentication.openAuthWindow(clientId, "token", REDIRECT_URI,
+                                             PERMISSIONS, null, this);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Uri uri = intent.getData();
+        if (uri != null && uri.getScheme().equals("spotigoo")) {
+            AuthenticationResponse response = SpotifyAuthentication.parseOauthResponse(uri);
+            ((TextView) findViewById(R.id.spotifyInfo)).setText(response.getAccessToken());
+        }
     }
 
     @Override

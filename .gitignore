@@ -4,3 +4,5 @@
 /.idea/libraries
 .DS_Store
 /build
+
+/spotigoo-music-migration/src/main/res/values/private-keys.xml
