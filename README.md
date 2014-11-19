@@ -18,7 +18,7 @@ sign up as a Spotify developer and then
 This id needs to be put in a resource string named "spotify_client_id".
 To do this without breaking things, create a resource file named:
 ```
-spotigoo-music-migration/src/main/res/values/private-keys.xml
+spotigoo-music-migration/src/main/res/values/private_keys.xml
 ```
 And put the following in the newly created resource file:
 ```xml
