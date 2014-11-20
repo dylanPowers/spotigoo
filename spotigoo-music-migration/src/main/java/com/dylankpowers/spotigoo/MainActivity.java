@@ -50,6 +50,12 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
+
+    private void authenticateWithSpotify() {
+        String clientId = getString(R.string.spotify_client_id);
+        SpotigooSpotifyAuthentication.openAuthWindow(clientId, this);
+    }
+
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
@@ -99,9 +105,7 @@ public class MainActivity extends ActionBarActivity {
                                        IBinder service) {
             mService = ((MigrationService.MigrationBinder) service).getService();
             mBound = true;
-
-            String clientId = getString(R.string.spotify_client_id);
-            mService.authenticateWithSpotify(clientId, MainActivity.this);
+            authenticateWithSpotify();
         }
 
         @Override

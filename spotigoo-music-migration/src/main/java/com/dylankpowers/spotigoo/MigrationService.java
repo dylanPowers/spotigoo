@@ -16,10 +16,6 @@ public class MigrationService extends Service {
         }
     }
 
-    public void authenticateWithSpotify(String spotifyClientId, Activity reference) {
-        SpotigooSpotifyAuthentication.openAuthWindow(spotifyClientId, reference);
-    }
-
     @Override
     public IBinder onBind(Intent intent) {
         return mBinder;
