@@ -1,9 +1,13 @@
 package com.dylankpowers.spotigoo;
 
 import android.app.Fragment;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,7 +20,9 @@ import com.spotify.sdk.android.authentication.SpotifyAuthentication;
 
 
 public class MainActivity extends ActionBarActivity {
-
+    boolean mBound = false;
+    MigrationServiceConnection mConnection = new MigrationServiceConnection();
+    MigrationService mService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +33,14 @@ public class MainActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-
-        String clientId = getString(R.string.spotify_client_id);
-        // Bind to the service somehow right here
+    }
+    
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Bind to LocalService
+        Intent intent = new Intent(this, MigrationService.class);
+        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }
 
     @Override
@@ -79,4 +90,23 @@ public class MainActivity extends ActionBarActivity {
             return rootView;
         }
     }
+
+    /** Defines callbacks for service binding, passed to bindService() */
+     private class MigrationServiceConnection implements ServiceConnection {
+
+        @Override
+        public void onServiceConnected(ComponentName className,
+                                       IBinder service) {
+            mService = ((MigrationService.MigrationBinder) service).getService();
+            mBound = true;
+
+            String clientId = getString(R.string.spotify_client_id);
+            mService.authenticateWithSpotify(clientId, MainActivity.this);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName arg0) {
+            mBound = false;
+        }
+    };
 }
