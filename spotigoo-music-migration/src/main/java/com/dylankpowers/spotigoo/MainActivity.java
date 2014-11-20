@@ -63,6 +63,12 @@ public class MainActivity extends ActionBarActivity {
         if (uri != null && uri.getScheme().equals("spotigoo")) {
             AuthenticationResponse response = SpotifyAuthentication.parseOauthResponse(uri);
             ((TextView) findViewById(R.id.spotifyInfo)).setText(response.getAccessToken());
+            mService.getUserInfo(response.getAccessToken(), new MigrationService.UserInfoCallback() {
+                @Override
+                public void call(String userInfo) {
+                    ((TextView) findViewById(R.id.spotifyInfo)).setText(userInfo);
+                }
+            });
         }
     }
 
