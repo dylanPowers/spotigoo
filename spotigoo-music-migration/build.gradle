@@ -25,10 +25,12 @@ repositories {
 }
 
 dependencies {
-    compile 'com.spotify.sdk:spotifysdk:1.0.0-beta5@aar'
     compile 'com.android.support:appcompat-v7:21.+'
+    compile 'com.google.guava:guava:12.0'
     compile 'com.mcxiaoke.volley:library:1.0.7'
-    androidTestCompile('org.robolectric:robolectric:2.4')
+    compile 'com.spotify.sdk:spotifysdk:1.0.0-beta5@aar'
+    compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.19'
+    androidTestCompile 'org.robolectric:robolectric:2.4'
 }
 
 android {
