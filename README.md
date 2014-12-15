@@ -1,5 +1,5 @@
-Spotigoo
-========
+Spotigoo (WIP)
+==============
 An assistant for migrating between Spotify and Google Music
 
 Why an Android app?
