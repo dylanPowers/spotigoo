@@ -1,4 +1,4 @@
-package com.dylankpowers.spotigoo;
+package dylankpowers.spotigoo;
 
 import android.app.Fragment;
 import android.content.ComponentName;

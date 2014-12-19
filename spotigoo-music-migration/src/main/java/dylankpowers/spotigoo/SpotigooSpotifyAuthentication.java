@@ -1,4 +1,4 @@
-package com.dylankpowers.spotigoo;
+package dylankpowers.spotigoo;
 
 import android.app.Activity;
 import com.spotify.sdk.android.authentication.SpotifyAuthentication;

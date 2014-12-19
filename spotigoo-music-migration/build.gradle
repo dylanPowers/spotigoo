@@ -29,7 +29,7 @@ repositories {
 dependencies {
     compile 'com.android.support:appcompat-v7:21.+'
     compile 'com.google.guava:guava:18.0'
-    compile 'com.kaaes.spotify.webapi.android:spotify-web-api-android:0.1.+'
+    compile 'kaaes.spotify.webapi.android:spotify-web-api-android:0.1.+'
     compile 'com.mcxiaoke.volley:library:1.0.7'
     compile 'com.spotify.sdk:spotifysdk:1.0.0-beta5@aar'
     compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.19'
