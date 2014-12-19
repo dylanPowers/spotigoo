@@ -5,7 +5,6 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:0.14.2'
         classpath 'org.robolectric:robolectric-gradle-plugin:0.14.+'
-        classpath 'org.batcha.gradle.plugins:git-dependencies:0.2'
     }
 }
 
@@ -16,7 +15,6 @@ allprojects {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'git-dependencies'
 apply plugin: 'robolectric'
 
 repositories {
@@ -28,11 +26,11 @@ repositories {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:21.+'
-    compile 'com.google.guava:guava:18.0'
-    compile 'kaaes.spotify.webapi.android:spotify-web-api-android:0.1.+'
-    compile 'com.mcxiaoke.volley:library:1.0.7'
+    compile 'com.squareup.retrofit:retrofit:1.8.0'
+    compile 'com.squareup.okhttp:okhttp:2.0.0'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
     compile 'com.spotify.sdk:spotifysdk:1.0.0-beta5@aar'
-    compile 'se.michaelthelin.spotify:spotify-web-api-java:1.4.19'
+    compile 'kaaes.spotify.webapi.android:spotify-web-api-android:0.1.+'
     androidTestCompile 'org.robolectric:robolectric:2.4'
 }
 
