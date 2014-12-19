@@ -1,4 +1,4 @@
-package com.dylankpowers.spotigoo;
+package dylankpowers.spotigoo;
 
 import android.app.Service;
 import android.content.Intent;
@@ -8,6 +8,7 @@ import android.util.Log;
 import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import kaaes.spotify.webapi.android.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,8 +30,9 @@ public class MigrationService extends Service {
     public void getUserInfo(String spotifyAccessToken, final UserInfoCallback callback) {
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = "https://api.spotify.com/v1/me";
-        SpotifyRequest request = new SpotifyRequest(url,
-        new Response.Listener<String>() {
+        SpotifyRequest request = new SpotifyRequest(
+                url,
+                new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -59,7 +61,8 @@ public class MigrationService extends Service {
     public class SpotifyRequest extends StringRequest {
         private HashMap<String, String> mHeaders = new HashMap<String, String>();
 
-        SpotifyRequest(String url, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+        SpotifyRequest(String url, Response.Listener<String> listener,
+                       Response.ErrorListener errorListener) {
             super(url, listener, errorListener);
         }
 
