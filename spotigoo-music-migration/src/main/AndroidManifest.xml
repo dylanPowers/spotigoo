@@ -32,7 +32,7 @@
         <service
             android:name="dylankpowers.spotigoo.MigrationService"
             android:enabled="true"
-            android:exported="true" >
+            android:exported="false" >
         </service>
     </application>
 
