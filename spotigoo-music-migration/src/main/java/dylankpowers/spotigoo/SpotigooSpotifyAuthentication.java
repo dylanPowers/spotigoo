@@ -11,7 +11,7 @@ public class SpotigooSpotifyAuthentication extends SpotifyAuthentication {
     };
 
     public static void openAuthWindow(String clientId, Activity activity) {
-        SpotifyAuthentication.openAuthWindow(clientId, "token", REDIRECT_URI,
-                PERMISSIONS, null, activity);
+        SpotifyAuthentication.openAuthWindow(clientId, "code", REDIRECT_URI,
+                                             PERMISSIONS, null, activity);
     }
 }
